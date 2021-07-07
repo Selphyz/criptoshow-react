@@ -1,12 +1,12 @@
 import React from 'react'
 import axios from 'axios'
-import {Paper, Table, TableContainer, TableRow, TableHead, TableCell, TableBody} from "@material-ui/core"
-import {styled} from "@material-ui/core/styles"
+import { Table, TableContainer, TableRow, TableHead, TableCell, TableBody } from "@material-ui/core"
+import { styled } from "@material-ui/core/styles"
 import { useEffect } from 'react'
-import {useSelector} from "react-redux"
-import { selectCrypto } from '../app/slices/cryptoSlice'
+import { useSelector } from "react-redux"
 import { useState } from 'react'
-import { CoinRow } from '../components'
+import { selectCrypto } from '../app/slices/cryptoSlice'
+import { AddCoin, CoinRow } from '../components'
 import { CoinData } from '../components/CoinRow'
 
 const HeaderCell = styled(TableCell)({
@@ -37,6 +37,7 @@ export const HomePage = () => {
         }
     }, [cryptos])
     return(loading)? <h1>Loading...</h1> : (
+        <><AddCoin />
         <TableContainer>
             <Table>
                 <TableHead>
@@ -57,7 +58,7 @@ export const HomePage = () => {
                     }
                 </TableBody>
             </Table>
-        </TableContainer>
+        </TableContainer></>
     )
 };
 

@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom"
 import { PriceChart, VolumeChart } from '../components';
-import { Prices } from '../components/PriceChart';
 import { Volumes } from '../components/VolumeChart';
 type ChartParams = {
     id: string

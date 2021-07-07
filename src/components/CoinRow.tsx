@@ -42,7 +42,7 @@ export const CoinRow: React.FC<ICoinRow> = ({data:
                 <div><ArrowDropUp style={{color: "#00ff00"}}/>
                 <span style={{color: "#00ff00"}}>{price_change_percentage_24h}</span></div>
                 ):(
-                <div><ArrowDropUp style={{color: "#00ff00"}}/>
+                <div><ArrowDropDown style={{color: "#00ff00"}}/>
                 <span style={{color: "#00ff00"}}>{price_change_percentage_24h}</span></div>
             )}
             <span className="delete-crypto" style={{color: "gray", cursor: "pointer"}} onClick={e=>deleteCrypto(e,id)}>

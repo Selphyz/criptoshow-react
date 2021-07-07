@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import cryptoReducer from "./slices/cryptoSlice"
+import freqReducer from "./slices/freqSlice"
 
 export const store = configureStore({
   reducer: {
-    cryptoState: cryptoReducer
+    cryptoState: cryptoReducer,
+    freqState: freqReducer
   },
 });
 

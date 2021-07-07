@@ -5,9 +5,15 @@ import logo from "../img/logo.jpg"
 
 const HeaderStyle = styled.div`
     margin-bottom: 10vh;
+    display: flex;
     & img {
         margin-top: 1rem;
         height: 70px;
+    }
+    & h1 {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        padding-left: 1rem
     }
 `
 

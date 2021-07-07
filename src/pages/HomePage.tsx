@@ -16,9 +16,11 @@ const HeaderCell = styled(TableCell)({
 
 export const HomePage = () => {
     const [coins, setCoins] = useState<CoinData[]>([])
+    const [loading, setLoading] = useState<boolean>(false)
     const cryptos = useSelector(selectCrypto)
     useEffect(()=>{
         const fetchData = async()=>{
+            setLoading(true)
             const response = await axios.get("/coins/markets", {
                 params: {
                     vs_currency: "eur",
@@ -26,10 +28,15 @@ export const HomePage = () => {
                 }
             })
             setCoins(response.data)
+            setLoading(false)
         }
-        fetchData()
+        if(cryptos.length){
+            fetchData()
+        }else{
+            setCoins([])
+        }
     }, [cryptos])
-    return (
+    return(loading)? <h1>Loading...</h1> : (
         <TableContainer>
             <Table>
                 <TableHead>

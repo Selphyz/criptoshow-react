@@ -2,3 +2,9 @@
   margin: 0;
   padding: 0;
 }
+.delete-crypto{
+  display: none;
+}
+.table-row:hover .delete-crypto{
+  display: block;
+}

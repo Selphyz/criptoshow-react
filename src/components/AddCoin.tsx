@@ -4,6 +4,8 @@ import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
+import { useSelector, useDispatch } from "react-redux"
+import { selectCrypto, ADD_CRYPTO } from "../app/slices/cryptoSlice"
 
 interface IListResponse {
     id: string
@@ -21,17 +23,22 @@ const AddCoinContainer = styled.div`
 `
 
 export const AddCoin = () => {
-    const [state, setState] = useState<{ crypto: string | number; name: string }>({
-        crypto: '',
-        name: '',
-    });
+    const dispatch = useDispatch()
+    const crypto = useSelector(selectCrypto)
     const [list, setList] = useState<IListResponse[]>([])
-    const handleChange = (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
-        const name = event.target.name as keyof typeof state;
-        setState({
-            ...state,
-            [name]: event.target.value,
-        });
+    // const [state, setState] = useState<{ crypto: string }>({
+    //     crypto: '',
+    // });
+    // const handleChange = (event: React.ChangeEvent<{ name?: string; value: any }>) => {
+    //     const name = event.target.name as keyof typeof state;
+    //     setState({
+    //         [name]: event.target.value,
+    //     });
+    // };
+    const handleChange = (event: React.ChangeEvent<{ name?: string; value: any }>) => {
+        if (crypto.indexOf(event.target.value) === -1) {
+            dispatch(ADD_CRYPTO([...crypto, event.target.value]))
+        }
     };
     useEffect(() => {
         const FetchData = async () => {
@@ -48,12 +55,11 @@ export const AddCoin = () => {
     return (
         <AddCoinContainer>
             <FormControl className="formControl">
-                <InputLabel htmlFor="age-native-simple">
-                    <AddCircle />Add Cryptos
+                <InputLabel>
+                    <AddCircle />
                 </InputLabel>
                 <Select
-                    native
-                    value={state.crypto}
+                    // onChange={handleChange}
                     onChange={handleChange}
                     inputProps={{
                         name: 'crypto',

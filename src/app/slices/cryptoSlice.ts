@@ -16,10 +16,13 @@ export const cryptoSlice = createSlice({
         },
         DELETE_CRYPTO: (state, action) => {
             state.crypto = action.payload
+        },
+        ADD_CRYPTO: (state, action) => {
+            state.crypto = action.payload
         }
 
     }
 })
-export const { SET_CRYPTO, DELETE_CRYPTO } = cryptoSlice.actions
+export const { SET_CRYPTO, DELETE_CRYPTO, ADD_CRYPTO } = cryptoSlice.actions
 export const selectCrypto = (state: RootState) => state.cryptoState.crypto
 export default cryptoSlice.reducer
